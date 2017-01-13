@@ -1,17 +1,12 @@
 
-# NO LONGER SUPPORTED. IF YOU WOULD LIKE TO TAKE OVER THIS PACKAGE SEND ME A MESSAGE.
 ---
-# json to sass loader for webpack
+# yaml to sass loader for webpack
 
-### 0.1.8 Changes
-- **Flagged as cacheable**
-- **Simpler implementation** (See Example Config)
-- **Marked dependencies** (triggers build on webpack watch and webpack-dev-server when vars file is changed)
-
+## Straight forward adaption of Edward Irbys jsontosass-loader
 
 ### Installation
 
-`npm install jsontosass-loader --save-dev`
+`npm install ymltosass-loader --save-dev`
 
 ## Usage
 
@@ -24,23 +19,21 @@ var sassVars = 'path/to/your/vars.json';
 var webpackConfig = {
     module: {
         loaders:[
-            {test: /.scss$/, loader: "style!css!sass!jsontosass?path="+ sassVars}
+            {test: /.scss$/, loader: "style!css!sass!ymltosass?path="+ sassVars}
         ]
     },
 }
 
 ```
 
-**Input [YourVars.json file]**
-``` json
-{
-"breakpoints":{
-    "portraitS": "320px",
-    "portraitM": "360px",
-    "portraitL": "414px",
-  },
-  "localNavHeight":"50px",
-}
+**Input [YourVars.yml file]**
+``` yml
+breakpoints:
+  - portraitS: "320px"
+  - portraitM: "360px"
+  - portraitL: "414px"
+
+localNavHeight: "50px"
 ```
 
 **Output SCSS**
@@ -48,9 +41,6 @@ var webpackConfig = {
 $breakpoints:(portraitS:320px,portraitM:360px,portraitL:414px);
 $localNavHeight:50px;
 ```
-
-
-Forked from gist: [jsonToSassVars](https://gist.github.com/Kasu/ea4f4861a81e626ea308) and [prepend-loader](https://gist.github.com/Kasu/29452051023ff5337bd7)
 
 ## License
 
